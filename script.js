@@ -30,7 +30,7 @@ async function getModel() {
     })
     .load({
         model: "melee",
-        version: 2,
+        version: 5,
     });
 
     model.configure({
@@ -226,6 +226,8 @@ function webcamInference() {
                 getCoordinates(video);
                 model.then(function (model) {
                 model.detect(video).then(function (predictions) {
+                    video.width = width;
+                    video.height = height;
                     ctx.drawImage(video, 0, 0, width, height, 0, 0, width, height);
 
                     ctx.beginPath();
